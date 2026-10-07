@@ -23,15 +23,14 @@ export function ContactForm({ defaultServices = [] }: { defaultServices?: string
     if (data.get("_honey")) return;
 
     const services = data.getAll("services").join(", ");
+    const phone = String(data.get("phone") ?? "");
     const body = [
-      data.get("message"),
+      String(data.get("message") ?? ""),
       "",
-      services && `Interested in: ${services}`,
-      data.get("phone") && `Phone: ${data.get("phone")}`,
-      `${data.get("name")}`,
-    ]
-      .filter((line) => line !== false && line !== null)
-      .join("\n");
+      services ? `Interested in: ${services}` : "",
+      phone ? `Phone: ${phone}` : "",
+      String(data.get("name") ?? ""),
+    ].join("\n");
     setFallback(
       `mailto:${site.email}?subject=${encodeURIComponent(`Enquiry from ${data.get("name")}`)}&body=${encodeURIComponent(body)}`,
     );
