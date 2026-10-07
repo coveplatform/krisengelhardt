@@ -1,4 +1,4 @@
-import { site } from "@/content/site";
+import { phoneHref, site } from "@/content/site";
 import styles from "./Footer.module.css";
 
 export function Footer() {
@@ -8,9 +8,14 @@ export function Footer() {
         © {new Date().getFullYear()} {site.name}
       </p>
       <p>{site.location}</p>
-      <a href={`mailto:${site.email}`} className="link">
-        {site.email}
-      </a>
+      <p className={styles.links}>
+        <a href={`tel:${phoneHref}`} className="link">
+          {site.phone}
+        </a>
+        <a href={`mailto:${site.email}`} className="link">
+          {site.email}
+        </a>
+      </p>
     </footer>
   );
 }

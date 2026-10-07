@@ -38,6 +38,13 @@
 
 .desktop {
   display: none;
+  align-items: center;
+  gap: clamp(24px, 3vw, 44px);
+}
+
+.cta {
+  padding: 0.6em 1.2em;
+  font-size: 0.875rem;
 }
 
 .desktop ul {
@@ -90,8 +97,18 @@
   text-decoration: none;
 }
 
-.sheetMail {
+.sheetFoot {
+  display: grid;
+  gap: 14px;
+  justify-items: start;
   margin-top: 48px;
+}
+
+.sheetFoot .button {
+  margin-bottom: 12px;
+}
+
+.sheetMail {
   color: var(--muted);
   text-decoration: none;
 }
@@ -102,9 +119,9 @@
   }
 }
 
-@media (min-width: 760px) {
+@media (min-width: 900px) {
   .desktop {
-    display: block;
+    display: flex;
   }
   .toggle,
   .sheet {

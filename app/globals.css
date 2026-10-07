@@ -169,6 +169,17 @@ a {
   color: var(--bg);
 }
 
+.button-solid {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.button-solid:hover {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+}
+
 .skip-link {
   position: absolute;
   left: var(--gutter);

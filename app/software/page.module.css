@@ -1,0 +1,280 @@
+/* ---------- Hero ---------- */
+
+.hero {
+  padding-block: clamp(48px, 8vw, 96px) var(--section);
+}
+
+.hero h1 {
+  max-width: 16ch;
+  margin-top: clamp(40px, 6vw, 72px);
+  font-size: clamp(2.5rem, 6.6vw, 6rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.lede {
+  max-width: 600px;
+  margin-top: clamp(28px, 4vw, 48px);
+  font-size: clamp(1.125rem, 1.6vw, 1.3rem);
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.section {
+  padding-bottom: var(--section);
+}
+
+.section h3 {
+  font-size: 1.375rem;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Sound familiar? ---------- */
+
+.signs {
+  margin-top: 40px;
+  counter-reset: sign;
+}
+
+.signs li {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  align-items: baseline;
+  padding-block: 20px;
+  border-bottom: 1px solid var(--line);
+  font-size: clamp(1.25rem, 2.4vw, 1.875rem);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  counter-increment: sign;
+}
+
+.signs li::before {
+  content: counter(sign, decimal-leading-zero);
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  color: var(--accent);
+}
+
+.note {
+  margin-top: 28px;
+  color: var(--muted);
+}
+
+/* ---------- Before / after ---------- */
+
+.exampleIntro {
+  margin-top: 40px;
+  font-size: 1.0625rem;
+  color: var(--muted);
+}
+
+.compare {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.before,
+.after {
+  padding: clamp(24px, 3vw, 40px);
+  border-radius: 4px;
+}
+
+.before {
+  background: var(--surface);
+}
+
+.after {
+  display: flex;
+  flex-direction: column;
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.compareLabel {
+  margin-bottom: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.before ol {
+  display: grid;
+  gap: 12px;
+  counter-reset: step;
+}
+
+.before li {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  color: var(--text);
+  counter-increment: step;
+}
+
+.before li::before {
+  content: counter(step);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.afterText {
+  margin-top: auto;
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+@media (min-width: 900px) {
+  .compare {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------- What I can build ---------- */
+
+.kinds {
+  display: grid;
+  gap: 40px 32px;
+  margin-top: 48px;
+}
+
+.kinds > li {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.examples {
+  display: grid;
+  gap: 4px;
+  margin-top: 8px;
+  font-size: 0.9375rem;
+  color: var(--accent);
+}
+
+@media (min-width: 640px) {
+  .kinds {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .kinds {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---------- How it works ---------- */
+
+.steps {
+  display: grid;
+  gap: 40px 32px;
+  margin-top: 48px;
+}
+
+.steps li {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.stepNum {
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+
+@media (min-width: 640px) {
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .steps {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---------- Proof ---------- */
+
+.proofIntro {
+  max-width: 560px;
+  margin-top: 40px;
+  font-size: 1.0625rem;
+}
+
+.proof {
+  display: grid;
+  gap: 48px 32px;
+  margin-top: 40px;
+}
+
+.proofCard {
+  display: grid;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.proofImage {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  margin-bottom: 8px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--surface);
+}
+
+.proofImage img {
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.9s var(--ease);
+}
+
+.proofCard:hover .proofImage img {
+  transform: scale(1.02);
+}
+
+@media (min-width: 760px) {
+  .proof {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------- Questions ---------- */
+
+.faq {
+  display: grid;
+  margin-top: 40px;
+}
+
+.faq > div {
+  display: grid;
+  gap: 8px;
+  padding-block: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.faq dt {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.faq dd {
+  max-width: 640px;
+}
+
+@media (min-width: 900px) {
+  .faq > div {
+    grid-template-columns: 5fr 7fr;
+    gap: 64px;
+  }
+}

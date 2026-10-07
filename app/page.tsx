@@ -2,12 +2,13 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 import Image from "next/image";
 import Link from "next/link";
+import { ContactSection } from "@/components/ContactSection";
 import { ProjectVisual } from "@/components/ProjectVisual";
 import { projects } from "@/content/projects";
 import { site } from "@/content/site";
 import styles from "./page.module.css";
 
-const services = [
+const services: { title: string; body: string; href?: string }[] = [
   {
     title: "Websites",
     body: "Modern websites built from scratch or redesigned from an existing site.",
@@ -19,6 +20,7 @@ const services = [
   {
     title: "Custom Software",
     body: "Simple internal tools, automations and applications designed to remove repetitive work and improve business processes.",
+    href: "/software",
   },
   {
     title: "Website Improvements",
@@ -61,7 +63,7 @@ export default function HomePage() {
             <a href="#work" className="link">
               View selected work ↓
             </a>
-            <a href="#contact" className="button">
+            <a href="#contact" className="button button-solid">
               Start a project
             </a>
           </div>
@@ -105,6 +107,11 @@ export default function HomePage() {
             <li key={s.title}>
               <h3>{s.title}</h3>
               <p className="muted">{s.body}</p>
+              {s.href && (
+                <Link href={s.href} className={`link ${styles.serviceLink}`}>
+                  How it works →
+                </Link>
+              )}
             </li>
           ))}
         </ul>
@@ -112,6 +119,13 @@ export default function HomePage() {
           I’m platform-agnostic. I work with WordPress, WooCommerce, Shopify, Wix and custom-built
           solutions depending on what makes sense for the project.
         </p>
+        <Link href="/software" className={styles.softwareBand}>
+          <span className={styles.softwareLabel}>Custom software</span>
+          <span className={styles.softwareText}>
+            Doing the same task every week? Software can probably do it for you.
+          </span>
+          <span className={styles.softwareCta}>See how it works →</span>
+        </Link>
       </section>
 
       <section id="about" className={`container ${styles.section}`} aria-labelledby="about-title">
@@ -169,28 +183,7 @@ export default function HomePage() {
         </ol>
       </section>
 
-      <section id="contact" className={`container ${styles.section} ${styles.contact}`} aria-labelledby="contact-title">
-        <p className="label">
-          <span>Contact</span>
-        </p>
-        <h2 id="contact-title">Have something you’d like to build?</h2>
-        <div className={styles.contactFoot}>
-          <p className={styles.lede}>
-            Whether you need a new website, want to improve an existing one, or have a business
-            process you think could work better, get in touch.
-          </p>
-          <div>
-            <a href={`mailto:${site.email}`} className="button">
-              Email Kris →
-            </a>
-            <p className={`muted ${styles.contactMeta}`}>
-              {site.location}
-              <br />
-              Available for projects locally and remotely
-            </p>
-          </div>
-        </div>
-      </section>
+      <ContactSection />
     </>
   );
 }

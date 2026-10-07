@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { nav, site } from "@/content/site";
+import { nav, phoneHref, site } from "@/content/site";
 import styles from "./Nav.module.css";
 
 export function Nav() {
@@ -37,6 +37,9 @@ export function Nav() {
                 </li>
               ))}
             </ul>
+            <Link href="/#contact" className={`button button-solid ${styles.cta}`}>
+              Start a project
+            </Link>
           </nav>
 
           <button
@@ -62,9 +65,17 @@ export function Nav() {
               </li>
             ))}
           </ul>
-          <a href={`mailto:${site.email}`} className={styles.sheetMail}>
-            {site.email}
-          </a>
+          <div className={styles.sheetFoot}>
+            <Link href="/#contact" className="button button-solid" onClick={close}>
+              Start a project
+            </Link>
+            <a href={`tel:${phoneHref}`} className={styles.sheetMail}>
+              {site.phone}
+            </a>
+            <a href={`mailto:${site.email}`} className={styles.sheetMail}>
+              {site.email}
+            </a>
+          </div>
         </nav>
       </div>
     </>

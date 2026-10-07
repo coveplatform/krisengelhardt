@@ -1,0 +1,68 @@
+.contact {
+  padding-bottom: var(--section);
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4f8a5b;
+}
+
+.contact h2 {
+  max-width: 13ch;
+  margin-top: clamp(48px, 7vw, 96px);
+  font-size: clamp(2.75rem, 8vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.grid {
+  display: grid;
+  gap: 56px;
+  margin-top: clamp(40px, 5vw, 72px);
+}
+
+.lede {
+  max-width: 460px;
+  font-size: clamp(1.125rem, 1.6vw, 1.3rem);
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.direct {
+  display: grid;
+  margin-top: 40px;
+  border-top: 1px solid var(--line);
+}
+
+.direct li {
+  display: grid;
+  gap: 4px;
+  padding-block: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.direct span {
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.direct a {
+  justify-self: start;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: 5fr 7fr;
+    gap: 80px;
+  }
+}

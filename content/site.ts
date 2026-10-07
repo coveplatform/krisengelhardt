@@ -4,6 +4,7 @@ export const site = {
   role: "Independent Web Designer + Developer",
   location: "Melbourne, Australia",
   email: "kris@krisengelhardt.com",
+  phone: "0403 720 218",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.krisengelhardt.com",
   description:
     "Independent web designer and developer in Melbourne. Websites, ecommerce, redesigns and custom software for small businesses.",
@@ -16,3 +17,6 @@ export const nav = [
   { label: "About", href: "/#about" },
   { label: "Contact", href: "/#contact" },
 ];
+
+/** International format for tel: and sms: links. */
+export const phoneHref = `+61${site.phone.replace(/\D/g, "").replace(/^0/, "")}`;

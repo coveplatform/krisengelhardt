@@ -52,6 +52,7 @@ const jsonLd = {
   description: site.description,
   url: site.url,
   email: site.email,
+  telephone: site.phone,
   areaServed: { "@type": "City", name: "Melbourne" },
   address: {
     "@type": "PostalAddress",

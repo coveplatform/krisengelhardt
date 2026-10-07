@@ -149,6 +149,61 @@
   color: var(--ink);
 }
 
+.serviceLink {
+  justify-self: start;
+  margin-top: 6px;
+  font-size: 0.9375rem;
+}
+
+/* Teaser for the custom software page. */
+.softwareBand {
+  display: grid;
+  gap: 16px;
+  margin-top: clamp(64px, 8vw, 112px);
+  padding: clamp(28px, 4vw, 56px);
+  border-radius: 4px;
+  background: var(--ink);
+  color: var(--bg);
+  text-decoration: none;
+}
+
+.softwareLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.softwareText {
+  max-width: 22ch;
+  font-size: clamp(1.75rem, 3.6vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.softwareCta {
+  justify-self: start;
+  margin-top: 8px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid currentColor;
+  transition: opacity 0.3s var(--ease);
+}
+
+.softwareBand:hover .softwareCta {
+  opacity: 0.7;
+}
+
+@media (min-width: 900px) {
+  .softwareBand {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+  .softwareLabel {
+    grid-column: 1 / -1;
+  }
+}
+
 /* ---------- About ---------- */
 
 .about {
@@ -222,34 +277,5 @@
 @media (min-width: 760px) {
   .steps {
     grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* ---------- Contact ---------- */
-
-.contact h2 {
-  max-width: 13ch;
-  margin-top: clamp(48px, 7vw, 96px);
-  font-size: clamp(2.75rem, 8vw, 7.5rem);
-  line-height: 0.95;
-  letter-spacing: -0.045em;
-}
-
-.contactFoot {
-  display: grid;
-  gap: 32px;
-  margin-top: clamp(40px, 5vw, 64px);
-}
-
-.contactMeta {
-  margin-top: 24px;
-  font-size: 0.9375rem;
-}
-
-@media (min-width: 900px) {
-  .contactFoot {
-    grid-template-columns: 6fr 5fr;
-    gap: 80px;
-    align-items: start;
   }
 }
