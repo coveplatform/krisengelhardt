@@ -1,0 +1,113 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: var(--nav-h);
+}
+
+.mark {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.mark strong {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.role {
+  display: none;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.desktop {
+  display: none;
+}
+
+.desktop ul {
+  display: flex;
+  gap: clamp(24px, 3vw, 44px);
+  font-size: 0.9375rem;
+}
+
+.toggle {
+  padding: 0.5rem 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9375rem;
+  cursor: pointer;
+}
+
+.sheet {
+  position: fixed;
+  z-index: 49;
+  inset: var(--nav-h) 0 0;
+  background: var(--bg);
+  overflow-y: auto;
+}
+
+.sheet[hidden] {
+  display: none;
+}
+
+.sheet nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+  padding-block: 24px 40px;
+}
+
+.sheet li {
+  border-top: 1px solid var(--line);
+}
+
+.sheet li a {
+  display: block;
+  padding-block: 14px;
+  color: var(--ink);
+  font-size: 2.25rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+}
+
+.sheetMail {
+  margin-top: 48px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+@media (min-width: 1000px) {
+  .role {
+    display: inline;
+  }
+}
+
+@media (min-width: 760px) {
+  .desktop {
+    display: block;
+  }
+  .toggle,
+  .sheet {
+    display: none;
+  }
+}
