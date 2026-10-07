@@ -62,7 +62,7 @@ export default async function ProjectPage({ params }: Props) {
           <p className="muted">Scope</p>
           <p>{project.tags.join(", ")}</p>
           {project.concept && (
-            <p className={`muted ${styles.note}`}>Unbuilt concept, not a live client site.</p>
+            <p className={`muted ${styles.note}`}>Redesign proposal. Business name and details have been changed.</p>
           )}
           {project.url && (
             <a href={project.url} target="_blank" rel="noopener noreferrer" className="button">

@@ -30,7 +30,7 @@ export type Project = {
   tags: string[];
   /** Live site, shown as a "Visit site" link. */
   url?: string;
-  /** Marks unbuilt concepts so the project page can say so. */
+  /** Marks redesign proposals (not yet live) so the project page can say so. */
   concept: boolean;
   /** Desktop screenshot in /public/work, 16:10. Taller shots are cropped to the top. */
   image?: Shot;
@@ -56,52 +56,52 @@ const mobile = (file: string, alt: string): Shot => ({
 
 export const projects: Project[] = [
   {
-    slug: "giardino-di-fiori",
-    title: "Giardino di Fiori",
+    slug: "florist-redesign",
+    title: "Melbourne Florist",
     type: "Website redesign + ecommerce",
     year: "2026",
     summary:
       "Redesign and redevelopment of an established Melbourne florist website, improving the visual design, mobile experience, ordering flow and WooCommerce setup.",
     description: [
-      "Giardino di Fiori is an established florist in Thomastown, delivering across Melbourne’s north. Their website had fallen behind the quality of their flowers.",
-      "The redesign gave the site a cleaner visual identity, a properly mobile-first layout and a simpler ordering flow, with the WooCommerce store rebuilt and tidied so it’s easier to order from and easier to manage.",
+      "An established florist delivering across Melbourne’s north, whose website had fallen behind the quality of their flowers.",
+      "The redesign gives the site a cleaner visual identity, a properly mobile-first layout and a simpler ordering flow, with the WooCommerce store rebuilt and tidied so it’s easier to order from and easier to manage.",
     ],
     tags: ["Website Design", "WooCommerce", "Development"],
-    concept: false,
-    image: desktop("giardino-desktop.jpg", "Giardino di Fiori homepage on desktop"),
-    mobileImage: mobile("giardino-mobile.jpg", "Giardino di Fiori product page on mobile"),
+    concept: true,
+    image: desktop("florist-desktop.jpg", "Florist website redesign homepage on desktop"),
+    mobileImage: mobile("florist-mobile.jpg", "Florist website redesign product page on mobile"),
   },
   {
-    slug: "leona-party-and-home",
-    title: "Leona Party & Home",
-    type: "Website redesign concept",
+    slug: "party-store-redesign",
+    title: "Party & Balloon Store",
+    type: "Website redesign",
     year: "2026",
     summary:
-      "A redesign for a Melbourne balloon and party store with three locations, bringing shopping, styling packages, hire and a party planner into one clear, mobile-friendly site.",
+      "A redesign for a Melbourne balloon and party retailer with several stores, bringing shopping, styling packages, hire and a party planner into one clear, mobile-friendly site.",
     description: [
-      "Leona Party & Home sells balloons, party supplies, styling and hire from three stores across Melbourne. Their existing site made it hard to see everything they offer.",
-      "The concept organises the business around what customers are planning: occasions, ready-made decor packages, a party gallery with “get this look”, product pages with pickup or delivery, a step-by-step party planner and store pages with live opening hours.",
+      "A balloon and party retailer selling supplies, styling and hire from several stores across Melbourne. Their existing site made it hard to see everything they offer.",
+      "The redesign organises the business around what customers are planning: occasions, ready-made decor packages, a party gallery with “get this look”, product pages with pickup or delivery, a step-by-step party planner and store pages with live opening hours.",
     ],
     tags: ["Web Design", "Ecommerce UX", "Front-end"],
     concept: true,
-    image: desktop("leona-desktop.jpg", "Leona Party & Home redesign homepage on desktop"),
-    mobileImage: mobile("leona-mobile.jpg", "Leona Party & Home redesign on mobile"),
+    image: desktop("party-store-desktop.jpg", "Party store website redesign homepage on desktop"),
+    mobileImage: mobile("party-store-mobile.jpg", "Party store website redesign on mobile"),
   },
   {
-    slug: "maddy-k",
-    title: "Maddy K",
-    type: "Website redesign concept",
+    slug: "chauffeur-redesign",
+    title: "Private Chauffeur Service",
+    type: "Website redesign",
     year: "2026",
     summary:
-      "A modern redesign of an existing small-business website focused on clearer navigation, stronger presentation and a much more contemporary visual identity.",
+      "A modern redesign for a Melbourne chauffeur business, focused on clearer navigation, stronger presentation and making it much quicker to book.",
     description: [
-      "Maddy.K is a private chauffeur service in Melbourne covering airport transfers, corporate travel, weddings and events. The existing site didn’t match the premium service behind it.",
-      "The concept gives the business a much stronger first impression, simplifies the navigation and puts booking front and centre, with a booking bar, address autocomplete and a short step-by-step quote flow.",
+      "A private chauffeur service in Melbourne covering airport transfers, corporate travel, weddings and events. The existing site didn’t match the premium service behind it.",
+      "The redesign gives the business a much stronger first impression, simplifies the navigation and puts booking front and centre, with a booking bar, address autocomplete and a short step-by-step quote flow.",
     ],
     tags: ["UI Design", "Web Design", "Front-end"],
     concept: true,
-    image: desktop("maddyk-desktop.jpg", "Maddy.K chauffeur redesign homepage on desktop"),
-    mobileImage: mobile("maddyk-mobile.jpg", "Maddy.K chauffeur redesign on mobile"),
+    image: desktop("chauffeur-desktop.jpg", "Chauffeur website redesign homepage on desktop"),
+    mobileImage: mobile("chauffeur-mobile.jpg", "Chauffeur website redesign on mobile"),
   },
   {
     slug: "mixreflect",
