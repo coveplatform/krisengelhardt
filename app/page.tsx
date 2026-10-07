@@ -57,7 +57,7 @@ export default function HomePage() {
             works.
           </p>
           <p className="muted">
-            {site.location} · {site.availability}
+            {site.location}
           </p>
           <div className={styles.heroActions}>
             <a href="#work" className="link">
