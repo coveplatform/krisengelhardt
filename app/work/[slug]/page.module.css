@@ -3,6 +3,8 @@
   font-size: 0.9375rem;
 }
 
+/* ---------- Header ---------- */
+
 .header {
   padding-block: clamp(40px, 6vw, 80px) 40px;
 }
@@ -13,15 +15,34 @@
   letter-spacing: -0.045em;
 }
 
-.meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: 28px;
-  padding-top: 14px;
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 24px;
+  margin: 32px 0 0;
+  padding-top: 16px;
   border-top: 1px solid var(--ink);
+}
+
+.facts dt {
+  margin-bottom: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.facts dd {
+  margin: 0;
   font-size: 0.9375rem;
   color: var(--ink);
+}
+
+@media (min-width: 900px) {
+  .facts {
+    grid-template-columns: 1fr 1.4fr 0.6fr 1fr;
+  }
 }
 
 .visual {
@@ -29,47 +50,247 @@
   overflow: hidden;
 }
 
-.body {
-  display: grid;
-  gap: 40px;
-  padding-block: 64px var(--section);
+/* ---------- Sections ---------- */
+
+.section {
+  padding-top: var(--section);
 }
 
-@media (min-width: 900px) {
-  .body {
-    grid-template-columns: 7fr 4fr;
-    gap: 80px;
-  }
+.section h3 {
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.kicker {
+  margin-bottom: 14px;
+  font-size: 0.875rem;
+  color: var(--accent);
+}
+
+.overview {
+  display: grid;
+  gap: 48px;
+  margin-top: 40px;
+}
+
+.problem {
+  max-width: 24ch;
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--ink);
 }
 
 .description {
   display: grid;
-  gap: 18px;
-  max-width: 60ch;
-  font-size: 1.1875rem;
-  line-height: 1.55;
-  color: var(--ink);
-}
-
-.aside {
-  display: grid;
-  gap: 6px;
+  gap: 16px;
   align-content: start;
-  justify-items: start;
-  font-size: 0.9375rem;
+  max-width: 60ch;
+  font-size: 1.0625rem;
+  line-height: 1.6;
 }
 
-.aside .button {
-  margin-top: 20px;
+.description .kicker {
+  margin-bottom: -2px;
 }
 
 .note {
-  margin-top: 16px;
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+@media (min-width: 900px) {
+  .overview {
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+}
+
+/* ---------- Key decisions ---------- */
+
+.decisions {
+  display: grid;
+  gap: 40px 48px;
+  margin-top: 40px;
+}
+
+.decisions li {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.num {
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+
+@media (min-width: 760px) {
+  .decisions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---------- Galleries ---------- */
+
+.board {
+  margin-top: 40px;
+  padding: clamp(16px, 3vw, 48px);
+  border-radius: 4px;
+  background: var(--surface);
+}
+
+/* The homepage cut into columns. Scrolls sideways on small screens. */
+.slices {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 75vw;
+  gap: clamp(12px, 2vw, 32px);
+  align-items: start;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.slices img {
+  width: 100%;
+  height: auto;
+  scroll-snap-align: start;
+  box-shadow: 0 20px 50px -30px rgb(0 0 0 / 0.35);
+}
+
+@media (min-width: 900px) {
+  .slices {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(var(--cols), 1fr);
+    overflow: visible;
+  }
+}
+
+.hint {
+  margin-top: 14px;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.pages {
+  display: grid;
+  gap: 48px 32px;
+  margin-top: 40px;
+}
+
+/* With an odd number of pages, the first one runs full width. */
+@media (min-width: 900px) {
+  .pages {
+    grid-template-columns: 1fr 1fr;
+  }
+  .pages > :first-child:nth-last-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+.pages figcaption,
+.phones figcaption {
+  margin-top: 14px;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.frame {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.frame img {
+  width: 100%;
+  height: auto;
+}
+
+.phones {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 62vw;
+  gap: clamp(16px, 3vw, 48px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.phones figure {
+  scroll-snap-align: start;
+}
+
+.phone {
+  overflow: hidden;
+  border: 5px solid #111;
+  border-radius: 28px;
+  background: #111;
+  box-shadow: 0 30px 60px -30px rgb(0 0 0 / 0.45);
+}
+
+.phone img {
+  width: 100%;
+  height: auto;
+  border-radius: 23px;
+}
+
+@media (min-width: 760px) {
+  .phones {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, minmax(0, 280px));
+    justify-content: center;
+    overflow: visible;
+  }
+}
+
+/* ---------- End ---------- */
+
+.cta {
+  display: grid;
+  gap: 24px;
+  justify-items: start;
+  margin-top: var(--section);
+  padding: clamp(32px, 5vw, 64px);
+  border-radius: 4px;
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.ctaText {
+  max-width: 20ch;
+  font-size: clamp(1.75rem, 3.6vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.cta :global(.button-solid) {
+  border-color: var(--bg);
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.cta :global(.button-solid:hover) {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+}
+
+@media (min-width: 900px) {
+  .cta {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
 }
 
 .next {
   display: grid;
   gap: 8px;
+  margin-top: 64px;
   padding-block: 24px var(--section);
   border-top: 1px solid var(--ink);
   color: var(--ink);
