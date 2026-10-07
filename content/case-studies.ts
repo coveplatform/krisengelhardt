@@ -15,7 +15,7 @@ export type CaseStudy = {
   decisions: { title: string; body: string }[];
   /** The full homepage, cut into columns (top to bottom). */
   homepage: Figure[];
-  /** Inner pages and key screens, 1440×900. */
+  /** Inner pages and key screens, 16:10, captured at 2x where possible. */
   pages: Figure[];
   /** Phone screens, 780×1688 (390×844 at 2x). */
   phones: Figure[];
@@ -25,17 +25,25 @@ const slices = (slug: string, heights: number[], label: string): Figure[] =>
   heights.map((height, i) => ({
     src: `/work/${slug}/full-${i + 1}.jpg`,
     alt: `${label} homepage, part ${i + 1} of ${heights.length}`,
-    width: 720,
+    width: 1440,
     height,
   }));
 
-const page = (slug: string, file: string, caption: string): Figure => ({
+const page = (
+  slug: string,
+  file: string,
+  caption: string,
+  [width, height] = [2880, 1800],
+): Figure => ({
   src: `/work/${slug}/${file}.jpg`,
   alt: caption,
-  width: 1440,
-  height: 900,
+  width,
+  height,
   caption,
 });
+
+const DRIFT: [number, number] = [2616, 1635];
+const ONE_X: [number, number] = [1440, 900];
 
 const phone = (slug: string, file: string, caption: string): Figure => ({
   src: `/work/${slug}/${file}.jpg`,
@@ -67,8 +75,11 @@ export const caseStudies: Record<string, CaseStudy> = {
         body: "Large tap targets and an add-to-cart bar that stays on screen while customers scroll.",
       },
     ],
-    homepage: slices("florist-redesign", [650, 650], "Florist"),
-    pages: [page("florist-redesign", "product", "Product page: size, extras and delivery timing in one place")],
+    homepage: slices("florist-redesign", [1300, 1300], "Florist"),
+    pages: [
+      page("florist-redesign", "shop", "Shop by occasion, then best sellers", ONE_X),
+      page("florist-redesign", "product", "Product page: size, extras and delivery timing in one place", ONE_X),
+    ],
     phones: [
       phone("florist-redesign", "m-product", "Product page"),
       phone("florist-redesign", "m-sticky", "Add-to-cart bar that follows you down the page"),
@@ -96,7 +107,7 @@ export const caseStudies: Record<string, CaseStudy> = {
         body: "On phones, a bottom bar keeps Shop, Call, Plan a party and Bag one tap away.",
       },
     ],
-    homepage: slices("party-store-redesign", [2000, 2000, 1999], "Party store"),
+    homepage: slices("party-store-redesign", [3999, 3999, 3998], "Party store"),
     pages: [
       page("party-store-redesign", "party", "Party idea page: what’s in the setup, and Get this look"),
       page("party-store-redesign", "product", "Product page: colours, number, pickup or delivery"),
@@ -130,7 +141,7 @@ export const caseStudies: Record<string, CaseStudy> = {
         body: "A dark palette, generous type and photography-led layouts that match the service.",
       },
     ],
-    homepage: slices("chauffeur-redesign", [1798, 1798, 1796], "Chauffeur service"),
+    homepage: slices("chauffeur-redesign", [3595, 3595, 3593], "Chauffeur service"),
     pages: [
       page("chauffeur-redesign", "fleet", "Fleet, with passengers and luggage for each car"),
       page("chauffeur-redesign", "quote", "Quote flow with suggested pickup locations"),
@@ -159,7 +170,7 @@ export const caseStudies: Record<string, CaseStudy> = {
         body: "A listening room where real people hear the track and get paid for honest reviews.",
       },
     ],
-    homepage: slices("mixreflect", [1829, 1828], "MixReflect"),
+    homepage: slices("mixreflect", [3658, 3657], "MixReflect"),
     pages: [
       page("mixreflect", "report", "Sample report: the verdict and score up front"),
       page("mixreflect", "reviewer", "Reviewer sign-up, the other side of the product"),
@@ -192,12 +203,12 @@ export const caseStudies: Record<string, CaseStudy> = {
         body: "Performance from each video feeds into what Drift makes next.",
       },
     ],
-    homepage: slices("drift", [2018, 2018, 2018], "Drift"),
+    homepage: slices("drift", [4035, 4035, 4035], "Drift"),
     pages: [
-      page("drift", "dashboard", "Dashboard: the channel at a glance"),
-      page("drift", "create", "One-off video: topic, format and cost up front"),
-      page("drift", "plan", "Plan: channel focus and video style"),
-      page("drift", "onboarding", "Onboarding: pick a focus and see an estimate"),
+      page("drift", "dashboard", "Dashboard: the channel at a glance", DRIFT),
+      page("drift", "create", "One-off video: topic, format and cost up front", DRIFT),
+      page("drift", "plan", "Plan: channel focus and video style", DRIFT),
+      page("drift", "onboarding", "Onboarding: pick a focus and see an estimate", DRIFT),
     ],
     phones: [phone("drift", "m-home", "Homepage"), phone("drift", "m-pricing", "Pricing")],
   },

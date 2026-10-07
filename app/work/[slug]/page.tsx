@@ -142,6 +142,7 @@ export default async function ProjectPage({ params }: Props) {
                     width={s.width}
                     height={s.height}
                     sizes="(min-width: 900px) 420px, 75vw"
+                    quality={90}
                   />
                 ))}
               </div>
@@ -156,7 +157,7 @@ export default async function ProjectPage({ params }: Props) {
               <span>Inside {project.concept ? "the site" : "the product"}</span>
             </h2>
             <div className={styles.pages}>
-              {study.pages.map((p) => (
+              {study.pages.map((p, i) => (
                 <figure key={p.src}>
                   <div className={styles.frame}>
                     <Image
@@ -164,7 +165,12 @@ export default async function ProjectPage({ params }: Props) {
                       alt={p.alt}
                       width={p.width}
                       height={p.height}
-                      sizes="(min-width: 900px) 620px, 100vw"
+                      sizes={
+                        study.pages.length % 2 === 1 && i === 0
+                          ? "(min-width: 1320px) 1240px, 100vw"
+                          : "(min-width: 900px) 620px, 100vw"
+                      }
+                      quality={90}
                     />
                   </div>
                   {p.caption && <figcaption>{p.caption}</figcaption>}
@@ -182,7 +188,14 @@ export default async function ProjectPage({ params }: Props) {
                 {study.phones.map((p) => (
                   <figure key={p.src}>
                     <div className={styles.phone}>
-                      <Image src={p.src} alt={p.alt} width={p.width} height={p.height} sizes="300px" />
+                      <Image
+                        src={p.src}
+                        alt={p.alt}
+                        width={p.width}
+                        height={p.height}
+                        sizes="300px"
+                        quality={90}
+                      />
                     </div>
                     {p.caption && <figcaption>{p.caption}</figcaption>}
                   </figure>
