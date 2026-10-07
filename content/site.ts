@@ -4,7 +4,7 @@ export const site = {
   role: "Independent Web Designer + Developer",
   location: "Melbourne, Australia",
   email: "kris@krisengelhardt.com",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://krisengelhardt.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.krisengelhardt.com",
   description:
     "Independent web designer and developer in Melbourne. Websites, ecommerce, redesigns and custom software for small businesses.",
   availability: "Available for freelance projects",

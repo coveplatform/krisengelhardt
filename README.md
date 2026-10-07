@@ -15,7 +15,7 @@ npm run build && npm start
 1. **Screenshots** live in `public/work/` (desktop 1440×900, mobile 390×844) and are set per project in `content/projects.ts` with `image` / `mobileImage`. Leave out `mobileImage` for a desktop-only card.
 2. **Photo**: save a portrait (4:5) as `public/kris.jpg`. It replaces the "KE" placeholder in About automatically.
 3. **Live links**: set `url` on a project to show a "Visit site" button on its page.
-4. **Domain**: defaults to `https://krisengelhardt.com`. Override with `NEXT_PUBLIC_SITE_URL` in `.env.local` if needed.
+4. **Domain**: defaults to `https://www.krisengelhardt.com`. Override with `NEXT_PUBLIC_SITE_URL` in `.env.local` if needed.
 
 ## Where things live
 
