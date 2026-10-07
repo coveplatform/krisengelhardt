@@ -13,12 +13,28 @@ type Status = "idle" | "sending" | "sent" | "error";
 
 export function ContactForm({ defaultServices = [] }: { defaultServices?: string[] }) {
   const [status, setStatus] = useState<Status>("idle");
+  // If sending fails, offer the same message as a pre-filled email so nothing typed is lost.
+  const [fallback, setFallback] = useState("");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
     if (data.get("_honey")) return;
+
+    const services = data.getAll("services").join(", ");
+    const body = [
+      data.get("message"),
+      "",
+      services && `Interested in: ${services}`,
+      data.get("phone") && `Phone: ${data.get("phone")}`,
+      `${data.get("name")}`,
+    ]
+      .filter((line) => line !== false && line !== null)
+      .join("\n");
+    setFallback(
+      `mailto:${site.email}?subject=${encodeURIComponent(`Enquiry from ${data.get("name")}`)}&body=${encodeURIComponent(body)}`,
+    );
 
     setStatus("sending");
     try {
@@ -29,7 +45,7 @@ export function ContactForm({ defaultServices = [] }: { defaultServices?: string
           name: data.get("name"),
           email: data.get("email"),
           phone: data.get("phone") || "—",
-          interested_in: data.getAll("services").join(", ") || "—",
+          interested_in: services || "—",
           message: data.get("message"),
           _subject: `New enquiry from ${data.get("name")}`,
           _replyto: data.get("email"),
@@ -112,10 +128,12 @@ export function ContactForm({ defaultServices = [] }: { defaultServices?: string
           {status === "sending" ? "Sending…" : "Send message →"}
         </button>
         {status === "error" && (
-          <p className={styles.error} role="alert">
-            That didn’t send. Please email{" "}
-            <a href={`mailto:${site.email}`}>{site.email}</a> instead.
-          </p>
+          <div className={styles.error} role="alert">
+            <p>Sorry, that didn’t send. Your message is still here.</p>
+            <a href={fallback} className="link">
+              Send it by email instead →
+            </a>
+          </div>
         )}
       </div>
     </form>
