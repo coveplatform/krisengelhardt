@@ -172,10 +172,9 @@
   color: var(--muted);
 }
 
-/* Multiply lets the photo's white backdrop pick up the surface tone. */
 .portrait img {
   object-fit: cover;
-  mix-blend-mode: multiply;
+  object-position: 70% 50%;
 }
 
 .aboutText {
